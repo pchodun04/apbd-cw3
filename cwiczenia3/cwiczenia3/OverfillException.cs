@@ -1,8 +1,8 @@
 namespace cwiczenia3;
 
-public class OverfillExeption : Exception
+public class OverfillException : Exception
 {
-    public OverfillExeption(string? message) : base(message)
+    public OverfillException(string? message) : base(message)
     {
         Console.WriteLine(message);
     }

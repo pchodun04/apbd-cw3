@@ -19,12 +19,12 @@ public class Container
         MaxLoadWeight = maxLoadWeight;
     }
 
-    public void EmptyContainer()
+    public virtual void EmptyContainer()
     {
         LoadWeight = 0;
     }
 
-    public void LoadContainer(int loadWeight)
+    public virtual void LoadContainer(int loadWeight)
     {
         if (loadWeight > MaxLoadWeight)
         {

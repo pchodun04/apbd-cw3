@@ -4,15 +4,11 @@ public class LiquidContainer : Container, IHazardNotifier
 {
     private static bool _isDangerous;
     private static int _liquidContainerCounter;
-    public LiquidContainer(int weight, int height, int loadWeight, int width, string serialNumber, int maxLoadWeight) : base(weight, height, loadWeight, width, maxLoadWeight)
+    
+    public LiquidContainer(int weight, int height, int loadWeight, int width, int maxLoadWeight, bool isDangerous) : base(weight, height, loadWeight, width, maxLoadWeight)
     {
         SerialNumber += "L-" + _liquidContainerCounter++;
-    }
-
-    public LiquidContainer(int weight, int height, int loadWeight, int width, int maxLoadWeight) : base(weight, height, loadWeight, width, maxLoadWeight)
-    {
-        SerialNumber += "L-" + _liquidContainerCounter++;
-        _isDangerous = _isDangerous;
+        _isDangerous = isDangerous;
     }
 
     public void NotifyWhenDangerousSituation()
@@ -20,9 +16,21 @@ public class LiquidContainer : Container, IHazardNotifier
         Console.WriteLine("Dangerous situation with container " + SerialNumber);
     }
 
-    public void LoadContainer(int weight)
+    public override void LoadContainer(int weight)
     {
-        base.LoadContainer(weight);
-        
+        if (_isDangerous)
+        {
+            if (weight > MaxLoadWeight/2)
+            {
+                throw new OverfillException("You can't load more than a half of maximum load weight");
+            }else base.LoadContainer(weight);
+        }
+        else
+        {
+            if (weight > MaxLoadWeight*0.9)
+            {
+                throw new OverfillException("You can't load more than 90% of maximum load weight");
+            }else base.LoadContainer(weight);
+        }
     }
 }

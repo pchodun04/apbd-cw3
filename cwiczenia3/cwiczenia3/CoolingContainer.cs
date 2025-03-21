@@ -5,7 +5,9 @@ public class CoolingContainer : Container, IHazardNotifier
     private static int _coolingContainerCounter;
     public static string ProductName;
     public static double TemperatureInContainer;
-    public Product Product;
+    public static Product Product;
+    
+    
     public CoolingContainer(int weight, int height, int loadWeight, int width, int maxLoadWeight, string productName, double temperature, Product product) : base(weight, height, loadWeight, width, maxLoadWeight)
     {
         SerialNumber += "C-" + _coolingContainerCounter++;
@@ -18,7 +20,6 @@ public class CoolingContainer : Container, IHazardNotifier
     {
         Console.WriteLine("Dangerous situation with container " + SerialNumber);
     }
-    
-    
+
     
 }

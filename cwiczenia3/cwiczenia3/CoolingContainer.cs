@@ -5,15 +5,15 @@ public class CoolingContainer : Container, IHazardNotifier
     private static int _coolingContainerCounter;
     public static string ProductName;
     public static double TemperatureInContainer;
-    public static Product Product;
-    
-    
-    public CoolingContainer(int weight, int height, int loadWeight, int width, int maxLoadWeight, string productName, double temperature, Product product) : base(weight, height, loadWeight, width, maxLoadWeight)
+    public Product Product;
+    public List<Product> products;
+    public CoolingContainer(int weight, int height, int loadWeight, int width, int maxLoadWeight, Product product) : base(weight, height, loadWeight, width, maxLoadWeight)
     {
         SerialNumber += "C-" + _coolingContainerCounter++;
-        ProductName = productName;
-        TemperatureInContainer = temperature;
         Product = product;
+        products.Add(product);
+        ProductName = product.ProductName;
+        TemperatureInContainer = product.Temperature;
     }
 
     public void NotifyWhenDangerousSituation()
@@ -21,5 +21,17 @@ public class CoolingContainer : Container, IHazardNotifier
         Console.WriteLine("Dangerous situation with container " + SerialNumber);
     }
 
+    public void LoadContainer(Product product)
+    {
+        if (product.ProductName == ProductName)
+        {
+            if (product.Temperature <= TemperatureInContainer)
+            {
+                products.Add(product);
+            }
+            else throw new Exception("Temperature of product is not good.");
+        }
+        else throw new Exception("Product name is not equal to the container.");
+    }
     
 }

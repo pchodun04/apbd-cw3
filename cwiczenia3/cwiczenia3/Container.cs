@@ -31,4 +31,9 @@ public class Container
             throw new OverfillException("Load weight is too big");
         }
     }
+
+    public override string ToString()
+    {
+        return "weight: " + Weight + " height: " + Height + " loadweight: " + LoadWeight + " width: " + Width;
+    }
 }

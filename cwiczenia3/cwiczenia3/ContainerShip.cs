@@ -47,5 +47,15 @@ public class ContainerShip
             throw new Exception("Container not found");
         else Containers[index] = newContainer;
     }
-    
+
+    public void MoveContainers(ContainerShip ship1, ContainerShip ship2, Container container)
+    {
+        ship1.RemoveContainer(container);
+        ship2.AddContainer(container);
+    }
+
+    public override string ToString()
+    {
+        return " containers weight: " + _containersCurrentWeight + " max weight: " + MaxWeight + " number of containers: " + _containerCounter + " max containers: " + MaxContainers + " max speed: " + MaxSpeed + " containers: " + Containers;
+    }
 }

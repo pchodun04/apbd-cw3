@@ -6,7 +6,7 @@ public class CoolingContainer : Container, IHazardNotifier
     public static string ProductName;
     public static double TemperatureInContainer;
     public Product Product;
-    public List<Product> products;
+    public List<Product> products = new List<Product>();
     public CoolingContainer(int weight, int height, int loadWeight, int width, int maxLoadWeight, Product product) : base(weight, height, loadWeight, width, maxLoadWeight)
     {
         SerialNumber += "C-" + _coolingContainerCounter++;
@@ -33,5 +33,14 @@ public class CoolingContainer : Container, IHazardNotifier
         }
         else throw new Exception("Product name is not equal to the container.");
     }
-    
+
+    public override void EmptyContainer()
+    {
+        LoadWeight = 0;
+        products.Clear();
+    }
+    public override string ToString()
+    {
+        return "weight:" + Weight + " height:" + Height + " loadweight:" + LoadWeight + " width:" + Width + " maxloadweight:" + MaxLoadWeight + " Products:" + products + base.ToString();
+    }
 }

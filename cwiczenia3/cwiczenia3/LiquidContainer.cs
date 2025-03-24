@@ -33,4 +33,8 @@ public class LiquidContainer : Container, IHazardNotifier
             }else base.LoadContainer(weight);
         }
     }
+    public override string ToString()
+    {
+        return "weight:" + Weight + " height: " + Height + " loadweight: " + LoadWeight + " width: " + Width + " maxloadweight: " + MaxLoadWeight + " is dangerous: " + _isDangerous + base.ToString();
+    }
 }

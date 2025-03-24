@@ -26,4 +26,9 @@ public class GasContainer : Container, IHazardNotifier
             throw new OverfillException("The maximum load weight has been reached.");
         }else base.LoadContainer(weight);
     }
+
+    public override string ToString()
+    {
+        return "weight:" + Weight + " height:" + Height + " loadweight:" + LoadWeight + " width:" + Width + " maxloadweight:" + MaxLoadWeight + " gaspressure:" + _gasPressure + base.ToString();
+    }
 }

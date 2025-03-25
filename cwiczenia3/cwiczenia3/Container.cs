@@ -1,19 +1,18 @@
 namespace cwiczenia3;
 
-public class Container
+public abstract class Container
 {
-    public int Weight {get;set;}
+    public int OwnWeight {get;set;}
     public int Height {get;set;}
     public int LoadWeight {get;set;}
     public int Width {get;set;}
     public string SerialNumber {get;set;}
     public int MaxLoadWeight {get;set;}
 
-    public Container(int weight, int height, int loadWeight, int width, int maxLoadWeight)
+    public Container(int weight, int height, int width, int maxLoadWeight)
     {
-        Weight = weight;
+        OwnWeight = weight;
         Height = height;
-        LoadWeight = loadWeight;
         Width = width;
         SerialNumber = "KON-";
         MaxLoadWeight = maxLoadWeight;
@@ -30,10 +29,11 @@ public class Container
         {
             throw new OverfillException("Load weight is too big");
         }
+        LoadWeight = loadWeight;
     }
 
     public override string ToString()
     {
-        return "weight: " + Weight + " height: " + Height + " loadweight: " + LoadWeight + " width: " + Width;
+        return " own weight: " + OwnWeight + " height: " + Height + " loadweight: " + LoadWeight + " width: " + Width;
     }
 }

@@ -5,7 +5,7 @@ public class LiquidContainer : Container, IHazardNotifier
     private static bool _isDangerous;
     private static int _liquidContainerCounter;
     
-    public LiquidContainer(int weight, int height, int loadWeight, int width, int maxLoadWeight, bool isDangerous) : base(weight, height, loadWeight, width, maxLoadWeight)
+    public LiquidContainer(int weight, int height, int loadWeight, int width, int maxLoadWeight, bool isDangerous) : base(weight, height, width, maxLoadWeight)
     {
         SerialNumber += "L-" + _liquidContainerCounter++;
         _isDangerous = isDangerous;
@@ -35,6 +35,6 @@ public class LiquidContainer : Container, IHazardNotifier
     }
     public override string ToString()
     {
-        return "weight:" + Weight + " height: " + Height + " loadweight: " + LoadWeight + " width: " + Width + " maxloadweight: " + MaxLoadWeight + " is dangerous: " + _isDangerous + base.ToString();
+        return "weight:" + OwnWeight + " height: " + Height + " loadweight: " + LoadWeight + " width: " + Width + " maxloadweight: " + MaxLoadWeight + " is dangerous: " + _isDangerous + base.ToString();
     }
 }

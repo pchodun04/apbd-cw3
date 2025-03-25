@@ -4,7 +4,7 @@ public class GasContainer : Container, IHazardNotifier
 {
     private static int _gasContainerCounter;
     private static int _gasPressure;
-    public GasContainer(int weight, int height, int loadWeight, int width, int maxLoadWeight, int gasPressure) : base(weight, height, loadWeight, width, maxLoadWeight)
+    public GasContainer(int weight, int height, int loadWeight, int width, int maxLoadWeight, int gasPressure) : base(weight, height, width, maxLoadWeight)
     {
         SerialNumber += "G-" + _gasContainerCounter++;
         _gasPressure = gasPressure;
@@ -29,6 +29,6 @@ public class GasContainer : Container, IHazardNotifier
 
     public override string ToString()
     {
-        return "weight:" + Weight + " height:" + Height + " loadweight:" + LoadWeight + " width:" + Width + " maxloadweight:" + MaxLoadWeight + " gaspressure:" + _gasPressure + base.ToString();
+        return "own weight:" + OwnWeight + " height:" + Height + " loadweight:" + LoadWeight + " width:" + Width + " maxloadweight:" + MaxLoadWeight + " gaspressure:" + _gasPressure + base.ToString();
     }
 }

@@ -7,7 +7,7 @@ public class CoolingContainer : Container, IHazardNotifier
     public static double TemperatureInContainer;
     public Product Product;
     public List<Product> products = new List<Product>();
-    public CoolingContainer(int weight, int height, int loadWeight, int width, int maxLoadWeight, Product product) : base(weight, height, loadWeight, width, maxLoadWeight)
+    public CoolingContainer(int weight, int height, int loadWeight, int width, int maxLoadWeight, Product product) : base(weight, height, width, maxLoadWeight)
     {
         SerialNumber += "C-" + _coolingContainerCounter++;
         Product = product;
@@ -21,7 +21,7 @@ public class CoolingContainer : Container, IHazardNotifier
         Console.WriteLine("Dangerous situation with container " + SerialNumber);
     }
 
-    public void LoadContainer(Product product)
+    public void AddProduct(Product product)
     {
         if (product.ProductName == ProductName)
         {
@@ -41,6 +41,6 @@ public class CoolingContainer : Container, IHazardNotifier
     }
     public override string ToString()
     {
-        return "weight:" + Weight + " height:" + Height + " loadweight:" + LoadWeight + " width:" + Width + " maxloadweight:" + MaxLoadWeight + " Products:" + products + base.ToString();
+        return "own weight:" + OwnWeight + " height:" + Height + " loadweight:" + LoadWeight + " width:" + Width + " maxloadweight:" + MaxLoadWeight + " Products:" + products + base.ToString();
     }
 }

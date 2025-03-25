@@ -18,14 +18,14 @@ public class ContainerShip
 
     public void AddContainer(Container container)
     {
-        if (_containersCurrentWeight + container.Weight > MaxWeight)
+        if (_containersCurrentWeight + container.LoadWeight > MaxWeight)
         {
             throw new Exception("Weight exceed maximum weight");
         }else if(_containerCounter > MaxContainers)
         {
             throw new Exception("Number of containers exceed maximum containers");
         }
-        _containersCurrentWeight += container.Weight;
+        _containersCurrentWeight += container.OwnWeight;
         _containerCounter++;
         Containers.Add(container);
     }
